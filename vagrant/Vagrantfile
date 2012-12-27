@@ -1,0 +1,43 @@
+Vagrant::Config.run do |config|
+
+  config.vm.box = "precise64"
+
+  config.vm.box_url = "http://files.vagrantup.com/precise64.box"
+
+  # our server
+  config.vm.forward_port 8080, 18080
+
+  # couchdb
+  config.vm.forward_port 5984, 15984
+
+  config.vm.share_folder("rest-server", "/home/vagrant/rest-server", "../rest-server")
+
+  config.vm.provision :chef_solo do |chef|
+    chef.cookbooks_path = "cookbooks"
+
+    chef.json = {}
+
+    # apt
+    chef.add_recipe("apt");
+
+    #couchdb
+    chef.add_recipe("couchdb")
+    chef.json.merge!({
+        :couch_db => {
+            "bind_address" => "0.0.0.0"
+        }
+    });
+
+    # nodejs
+    chef.add_recipe("nodejs");
+    chef.json.merge!({
+        :nodejs => {
+            "install_method" => "source",
+            "version" => "0.8.16"
+        }
+    });
+
+
+  end
+
+end
