@@ -4,13 +4,16 @@ Vagrant::Config.run do |config|
 
   config.vm.box_url = "http://files.vagrantup.com/precise64.box"
 
-  # our server
+  # our rest-server
   config.vm.forward_port 8080, 18080
 
   # couchdb
   config.vm.forward_port 5984, 15984
 
+  # source folder
   config.vm.share_folder("rest-server", "/home/vagrant/rest-server", "../rest-server")
+  # allows symlink to be made in rest-server folder (required by npm)
+  config.vm.customize ["setextradata", :id, "VBoxInternal2/SharedFoldersEnableSymlinksCreate/rest-server", "1"]
 
   config.vm.provision :chef_solo do |chef|
     chef.cookbooks_path = "cookbooks"
