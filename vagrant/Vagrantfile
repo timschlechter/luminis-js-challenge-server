@@ -40,6 +40,14 @@ Vagrant::Config.run do |config|
         }
     });
 
+    # rest server
+    chef.add_recipe("rest-server")
+    chef.json.merge!({
+        :rest_server => {
+            "install_dir" => "/home/vagrant/rest-server"
+        }
+    })
+
 
   end
 

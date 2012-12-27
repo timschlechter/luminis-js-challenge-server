@@ -10,7 +10,7 @@ Requirements
 Installation
 ============
 
-1. Checkout project:
+0. Checkout project:
 
         git clone https://github.com/wtreur/luminis-js-challenge-server.git
         git submodule init
@@ -22,16 +22,11 @@ Installation
         vagrant up
         vagrant ssh
 
-1. Install rest-server from vagrant ssh session
-
-        cd ~/rest-server
-        npm install
-
-1. Launch rest-server from vagrant ssh session
+2. Launch rest-server from vagrant ssh session
 
         node app
 
-6. Open local browser and point to <http://localhost:18080>
+3. Open local browser and point to <http://localhost:18080>
 
 Additional info
 ===============
