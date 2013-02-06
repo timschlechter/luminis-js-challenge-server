@@ -8,6 +8,8 @@ app.use(express.bodyParser());
 
 app.get('/', route.allUsers);
 app.put('/', route.createUser);
+app.get('/:userName', route.listAllMessages);
+app.put('/:userName', route.createMessage);
 
 app.listen(app.get("port"));
 console.log("listening on port " + app.get("port"));
