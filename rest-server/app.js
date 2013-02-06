@@ -12,6 +12,7 @@ app.get('/', route.allUsers);
 app.put('/', route.createUser);
 app.get('/:userName', route.listAllMessages);
 app.put('/:userName', route.createMessage);
+app.get('/:userName/:messageId', route.showMessage);
 
 app.listen(app.get("port"));
 console.log("listening on port " + app.get("port"));

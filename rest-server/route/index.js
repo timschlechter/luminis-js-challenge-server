@@ -24,6 +24,15 @@ var User = function(id, name){
 	}
 	messages.push(message);
 	return message;
+    };
+
+    this.findById = function(messageId) {
+	for (var index = 0; index < messages.length; index++){
+	    if (messages[index].id === messageId) {
+		return messages[index];
+	    }
+	}
+	return undefined;
     }
 }
 
@@ -86,4 +95,13 @@ exports.listAllMessages = function(req, res) {
 exports.createMessage = function(req, res) {
     var message = req.user.postMessage(req.body.sender,req.body.content);
     res.json(message);
+}
+
+exports.showMessage = function(req, res) {
+    var message = req.user.findById(parseInt(req.params.messageId));
+    if (message) {
+	res.json(message);
+    } else {
+	res.json(404, {});
+    }
 }
