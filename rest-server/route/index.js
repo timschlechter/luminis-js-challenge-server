@@ -69,21 +69,21 @@ exports.createUser = function(req, res) {
     }
 }
 
-exports.listAllMessages = function(req, res) {
+exports.retrieveUser = function(req, res, next, userName) {
     var user = repo.findByName(req.params.userName);
     if (user) {
-	res.json(user.messages());
+	req.user = user;
+	next();
     } else {
-	res.json(404, {});
+	res.json(404,{});
     }
 }
 
+exports.listAllMessages = function(req, res) {
+    res.json(req.user.messages());
+}
+
 exports.createMessage = function(req, res) {
-    var user = repo.findByName(req.params.userName);
-    if (user) {
-	var message = user.postMessage(req.body.sender,req.body.content);
-	res.json(message);
-    } else {
-	res.json(404, {});
-    }
+    var message = req.user.postMessage(req.body.sender,req.body.content);
+    res.json(message);
 }
