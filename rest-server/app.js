@@ -7,6 +7,7 @@ app.set("port", process.env.PORT || 8080);
 app.use(express.bodyParser());
 
 app.param('userName', route.retrieveUser);
+app.param('messageId', route.retrieveMessage);
 
 app.get('/', route.allUsers);
 app.put('/', route.createUser);

@@ -98,10 +98,16 @@ exports.createMessage = function(req, res) {
 }
 
 exports.showMessage = function(req, res) {
-    var message = req.user.findById(parseInt(req.params.messageId));
+    res.json(req.message);
+}
+
+exports.retrieveMessage = function(req, res, next, messageId) {
+    var message = req.user.findById(parseInt(messageId));
     if (message) {
-	res.json(message);
+	req.message = message;
+	next();
     } else {
 	res.json(404, {});
     }
+    
 }
