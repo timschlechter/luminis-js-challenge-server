@@ -9,7 +9,14 @@ exports.allUsers = function(req, res) {
 exports.createUser = function(req, res) {
     var name = req.body.name;
     if (name) {
-	res.json(repo.createUser(req.body.name));
+	var user = repo.createUser(req.body.name);
+	if (user) {
+	    res.json(user);
+	} else {
+	    res.json(500, {
+		message : "duplicate name"
+	    })
+	}
     } else {
 	res.json(500, { 
 	    message : "no name"
