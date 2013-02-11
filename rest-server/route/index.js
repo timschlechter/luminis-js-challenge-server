@@ -1,48 +1,10 @@
-var generatorFactory = function(){
-    var id = 0;
-    return function(){
-	return id++;
-    }
-}
-
-var User = function(id, name){
-    var messages = [];
-    var generator = generatorFactory();
-
-    this.id = id;
-    this.name = name;
-    
-    this.messages = function(){
-	return messages;
-    };
-
-    this.postMessage = function(sender, content) {
-	var message = {
-	    id : generator(),
-	    sender : sender,
-	    content : content
-	}
-	messages.push(message);
-	return message;
-    };
-
-    this.findById = function(messageId) {
-	for (var index = 0; index < messages.length; index++){
-	    if (messages[index].id === messageId) {
-		return messages[index];
-	    }
-	}
-	return undefined;
-    }
-}
+var User = require("../lib/User");
 
 var Repository = function(){
     var store = [];
-    var generator = generatorFactory();
-   
 
     this.createUser = function(name){
-	var user = new User(generator(), name);
+	var user = new User(name);
 	store.push(user);
 	return user;
     };
