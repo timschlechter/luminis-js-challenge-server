@@ -1,29 +1,6 @@
-var User = require("../lib/User");
+var Repository = require("../lib/Repository");
 
-var Repository = function(){
-    var store = [];
-
-    this.createUser = function(name){
-	var user = new User(name);
-	store.push(user);
-	return user;
-    };
-
-    this.users = function(){
-	return store;
-    }
-
-    this.findByName = function(targetName){
-	for (var index = 0; index < store.length; index++) {
-	    if (store[index].name === targetName) {
-		return store[index];
-	    }
-	}
-	return undefined;
-    }
-};
-
-var repo = new Repository;
+var repo = new Repository();
 
 exports.allUsers = function(req, res) {
     res.json(repo.users());
