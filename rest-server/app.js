@@ -1,10 +1,14 @@
 var express = require('express');
 var route = require('./route');
+var cors = require('./cors');
 
 var app = express();
 
 app.set("port", process.env.PORT || 8080);
 app.use(express.bodyParser());
+
+//allow for cross origin resource sharing...
+app.use(cors.allow());
 
 app.param('userName', route.retrieveUser);
 app.param('messageId', route.retrieveMessage);
