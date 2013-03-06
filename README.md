@@ -31,3 +31,6 @@ Installation
 Additional info
 ===============
 * Couchdb server is forwarded to <http://localhost:15984/>
+
+_Although couchdb is installed when using Vagrant, it isn't required/used by the rest-server and
+should be removed from the provisioning._
