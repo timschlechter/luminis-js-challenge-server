@@ -39,7 +39,7 @@ exports.listAllMessages = function(req, res) {
 }
 
 exports.createMessage = function(req, res) {
-    var message = req.user.postMessage(req.body.sender,req.body.content);
+    var message = req.user.postMessage(req.body.sender,req.body);
     res.json(message);
 }
 
