@@ -5,7 +5,7 @@ Rest server for the Luminis Javascript challenge
 
 Requirements
 ============
-* [Vagrant](http://vagrantup.com/)
+* [Vagrant](http://vagrantup.com/) (Made for 1.0.x, but should be compatible with 1.x. [More info](http://www.hashicorp.com/blog/vagrant-1-1-and-vmware.html))
 
 Installation
 ============
@@ -24,13 +24,6 @@ Installation
 
 2. Launch rest-server from vagrant ssh session
 
-        node app
+        node restserver/app
 
 3. Open local browser and point to <http://localhost:18080>
-
-Additional info
-===============
-* Couchdb server is forwarded to <http://localhost:15984/>
-
-_Although couchdb is installed when using Vagrant, it isn't required/used by the rest-server and
-should be removed from the provisioning._

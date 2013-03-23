@@ -4,7 +4,8 @@
 #
 #
 
-include_recipe "nodejs::npm"
+package "nodejs"
+package "npm"
 
 execute "npm install" do
   cwd node['rest_server']['install_dir']

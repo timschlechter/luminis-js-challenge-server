@@ -7,46 +7,16 @@ Vagrant::Config.run do |config|
   # our rest-server
   config.vm.forward_port 8080, 18080
 
-  # couchdb
-  config.vm.forward_port 5984, 15984
-
   # source folder
   config.vm.share_folder("rest-server", "/home/vagrant/rest-server", "../rest-server")
+
   # allows symlink to be made in rest-server folder (required by npm)
   config.vm.customize ["setextradata", :id, "VBoxInternal2/SharedFoldersEnableSymlinksCreate/rest-server", "1"]
 
   config.vm.provision :chef_solo do |chef|
     chef.cookbooks_path = "cookbooks"
 
-    chef.json = {}
-
-    # apt
-    chef.add_recipe("apt");
-
-    #couchdb
-    chef.add_recipe("couchdb")
-    chef.json.merge!({
-        :couch_db => {
-            "bind_address" => "0.0.0.0"
-        }
-    });
-
-    # nodejs
-    chef.add_recipe("nodejs");
-    chef.json.merge!({
-        :nodejs => {
-            "install_method" => "source",
-            "version" => "0.8.16"
-        }
-    });
-
-    # rest server
     chef.add_recipe("rest-server")
-    chef.json.merge!({
-        :rest_server => {
-            "install_dir" => "/home/vagrant/rest-server"
-        }
-    })
 
 
   end

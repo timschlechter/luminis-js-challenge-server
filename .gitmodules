@@ -1,15 +1,4 @@
-[submodule "vagrant/cookbooks/build-essential"]
-	path = vagrant/cookbooks/build-essential
-	url = git://github.com/opscode-cookbooks/build-essential.git
-[submodule "vagrant/cookbooks/nodejs"]
-	path = vagrant/cookbooks/nodejs
-	url = git://github.com/mdxp/nodejs-cookbook.git
 [submodule "vagrant/cookbooks/apt"]
 	path = vagrant/cookbooks/apt
 	url = git://github.com/opscode-cookbooks/build-essential.git
-[submodule "vagrant/cookbooks/couchdb"]
-	path = vagrant/cookbooks/couchdb
-	url = git://github.com/opscode-cookbooks/couchdb.git
-[submodule "vagrant/cookbooks/erlang"]
-	path = vagrant/cookbooks/erlang
-	url = git://github.com/opscode-cookbooks/erlang.git
+

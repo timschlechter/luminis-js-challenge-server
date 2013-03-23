@@ -5,7 +5,7 @@ Installs the rest server node.js application
 
 Requirements
 ============
-* [nodejs](https://github.com/mdxp/nodejs-cookbook)
+* [apt](https://github.com/mdxp/apt)
 
 Attributes
 ==========
