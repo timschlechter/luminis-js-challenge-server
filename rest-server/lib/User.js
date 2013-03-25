@@ -6,26 +6,28 @@ var User = function(name){
     this.name = name;
     
     this.messages = function(){
-	return messages;
+	    return messages;
     };
 
     this.postMessage = function(sender, content) {
-	var message = {
-	    id : generator(),
-	    sender : sender,
-	    content : content
-	}
-	messages.push(message);
-	return message;
+        var now = new Date();
+        var message = {
+            id : generator(),
+            timestamp: now.toString(),
+            sender : sender,
+            content : content
+        }
+	    messages.push(message);
+	    return message;
     };
 
     this.findById = function(messageId) {
-	for (var index = 0; index < messages.length; index++){
-	    if (messages[index].id === messageId) {
-		return messages[index];
-	    }
-	}
-	return undefined;
+        for (var index = 0; index < messages.length; index++){
+            if (messages[index].id === messageId) {
+            return messages[index];
+            }
+        }
+        return undefined;
     }
 }
 
