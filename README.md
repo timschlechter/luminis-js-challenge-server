@@ -24,6 +24,6 @@ Installation
 
 2. Launch rest-server from vagrant ssh session
 
-        node restserver/app
+        node rest-server/app
 
 3. Open local browser and point to <http://localhost:18080>
