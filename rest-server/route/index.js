@@ -5,10 +5,10 @@ var Repository = require("../lib/Repository"),
 var repo = new Repository();
 
 exports.queryWolframAlpha = function(req, res) {
-	var url = 'http://api.wolframalpha.com/v1/query?input=' + req.params.query + '&appid=' + req.params.appid,
-		result ="";
+	var result = "",
+		url = 'http:///v1/query?input=' + req.params.query + '&appid=' + req.params.appid;
 
-	http.get(url, function(response) {
+	var request = http.get(url, function(response) {
 		console.log(response);
 		response.on('data', function (chunk) {
 			result += chunk;
@@ -18,7 +18,9 @@ exports.queryWolframAlpha = function(req, res) {
 			res.json(jsxml.fromXml(result));
 		});
 	});
-}
+
+    request.end();
+};
 
 exports.allUsers = function(req, res) {
     res.json(repo.users());
