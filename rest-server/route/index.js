@@ -9,6 +9,7 @@ exports.queryWolframAlpha = function(req, res) {
 		result ="";
 
 	http.get(url, function(response) {
+		console.log(response);
 		response.on('data', function (chunk) {
 			result += chunk;
 		});
