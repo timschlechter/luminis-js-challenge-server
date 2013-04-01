@@ -5,6 +5,7 @@ var Repository = require("../lib/Repository"),
 var repo = new Repository();
 
 exports.queryWolframAlpha = function(req, res) {
+	console.log(req, res);
 	var url = 'http://api.wolframalpha.com/v1/query?input=' + req.params.query + '&appid=' + req.params.appid,
 		result ="";
 
