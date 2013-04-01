@@ -21,6 +21,7 @@ exports.queryWolframAlpha = function(req, res) {
 }
 
 exports.allUsers = function(req, res) {
+		console.log(req, res);
     res.json(repo.users());
 }
 
