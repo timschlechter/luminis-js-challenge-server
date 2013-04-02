@@ -60,6 +60,8 @@ exports.listAllMessages = function(req, res) {
 exports.createMessage = function(req, res) {
     var message = req.user.postMessage(req.body.sender,req.body.content);
     res.json(message);
+
+    return message;
 }
 
 exports.showMessage = function(req, res) {

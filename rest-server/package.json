@@ -8,11 +8,13 @@
   },
   "dependencies": {
     "express": "3.0.5",
-    "jsxml" : "*"
+    "jsxml" : "*",
+    "socket.io" : "*"
   },
   "devDependencies": {
     "nodemon" : "*",
     "mocha" : "*",
-    "jsxml" : "*"
+    "jsxml" : "*",
+    "socket.io" : "*"
   }
 }
