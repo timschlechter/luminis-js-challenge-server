@@ -6,7 +6,7 @@ var repo = new Repository();
 
 exports.queryWolframAlpha = function(req, res) {
 	var result = "",
-		url = 'http://api.wolframalpha.com/v1/query?input=' + req.params.query + '&appid=' + req.params.appid;
+		url = 'http://140.177.18.10//v1/query?input=' + req.params.query + '&appid=' + req.params.appid;
 
 	var request = http.get(url, function(response) {
 		response.on('data', function (chunk) {
